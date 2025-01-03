@@ -1,0 +1,80 @@
+# ------------------------
+# OS generated files
+# ------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ------------------------
+# macOS folder attributes
+# ------------------------
+.AppleDouble
+.LSOverride
+
+# ------------------------
+# Node modules
+# ------------------------
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# ------------------------
+# Ruby / Rails / Bundler
+# ------------------------
+*.gem
+*.rbc
+.bundle
+vendor/bundle
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+*.swp
+*.swo
+coverage/
+.byebug_history
+.rvmrc
+.rbenv-vars
+.env
+
+# ------------------------
+# Python (if any scripts)
+# ------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyd-dll
+
+# ------------------------
+# Visual Studio Code
+# ------------------------
+.vscode/
+.history/
+
+# ------------------------
+# Zsh and shell environment
+# ------------------------
+.zcompdump*
+.zshrc-backup*
+oh-my-posh-cache/
+
+# ------------------------
+# Misc or secrets
+# ------------------------
+*.secret
+*.env
+*.env.local
+.envrc
+
+# Ignore the Brew cache directory
+Library/Caches/Homebrew/
+
+# ------------------------
+# End of .gitignore
+# ------------------------
