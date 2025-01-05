@@ -1,0 +1,201 @@
+###########################################################
+# [user]
+#   Basic user info used in commit metadata.
+###########################################################
+[user]
+	name = Pierre G Boutquin          # Full name as you'd like it to appear in commits
+	email = pierre@boutquin.com       # Email linked to your GitHub account, used in commit metadata
+
+###########################################################
+# [github]
+#   GitHub-specific settings. This 'user' key is not official
+#   Git config, but sometimes used for custom scripts.
+###########################################################
+[github]
+	user = boutquin                  # Used by certain scripts or custom tooling referencing GitHub user
+
+###########################################################
+# [core]
+#   Core Git behavior and file handling.
+###########################################################
+[core]
+	excludesfile = ~/.config/git/ignore    # Global ignore file path
+	editor = code --wait                   # Default editor for commit messages, etc. 'code --wait' waits until file is closed
+	filemode = false                       # Prevents Git from tracking execute permissions changes on files (common on Windows)
+	trustctime = false                     # Improves performance by ignoring file creation times for changed file detection
+	autocrlf = input                       # On commit, convert Windows CRLF to LF; do not change on checkout
+	untrackedCache = true                  # Caches untracked files for performance
+	pager = delta                          # Uses 'delta' instead of the default pager for diffs
+	ignorecase = false                     # Disables ignoring case for file names (relevant on case-sensitive filesystems)
+
+###########################################################
+# [credential]
+#   Credential helper for securely storing credentials.
+###########################################################
+[credential]
+	helper = osxkeychain                   # Uses macOS Keychain to store credentials
+
+###########################################################
+# [pull]
+#   Options when pulling from remote.
+###########################################################
+[pull]
+	rebase = true                          # Use 'git pull --rebase' by default, avoiding merge commits
+
+###########################################################
+# [rerere]
+#   "Reuse Recorded Resolution" for merging conflicts.
+###########################################################
+[rerere]
+	enabled = true                         # Git remembers how you resolve repeated conflicts and auto-resolves them
+
+###########################################################
+# [rebase]
+#   Options controlling behavior during rebase operations.
+###########################################################
+[rebase]
+	autoStash = true                       # Git will stash changes before rebase and pop them afterward automatically
+
+###########################################################
+# [init]
+#   Default Git behavior for new repositories.
+###########################################################
+[init]
+	defaultBranch = main                   # Set the default branch name to 'main' instead of 'master'
+
+###########################################################
+# [push]
+#   Options controlling behavior when pushing to remote.
+###########################################################
+[push]
+	default = simple                       # Use the "simple" push strategy: push current branch to remote branch with same name
+	followTags = true                      # Push annotated tags whenever pushing commits
+
+###########################################################
+# [fetch]
+#   Behavior when fetching from remote.
+###########################################################
+[fetch]
+	prune = true                           # Auto-remove local references to branches deleted on remote
+
+###########################################################
+# [grep]
+#   Behavior for 'git grep'.
+###########################################################
+[grep]
+	lineNumber = true                      # Show line numbers for matching lines
+
+###########################################################
+# [help]
+#   Misc. user interface tweaks.
+###########################################################
+[help]
+	autocorrect = 1                        # If you mistype a command, Git will auto-correct after a short delay
+
+###########################################################
+# [alias]
+#   Time-saving shortcuts for frequently used commands.
+###########################################################
+[alias]
+	amend = commit --amend --reuse-message=HEAD
+	  # 'git amend' reuses the last commit message to amend the current commit
+	br = branch
+	  # 'git br' shows or manipulates branches
+	ci = commit
+	  # 'git ci' as a shorthand for 'git commit'
+	co = checkout
+	  # 'git co' as a shorthand for 'git checkout'
+	contrib = shortlog --summary --numbered
+	  # 'git contrib' shows a summary of commit contributions by author
+	d = diff
+	  # 'git d' quickly shows a diff of changes
+	diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
+	  # 'git diffstat' displays a short statistic summary of changes on HEAD or a given commit
+	ds = -c delta.side-by-side=true diff
+	  # 'git ds' uses delta in side-by-side mode to display diffs
+	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
+	  # 'git fc' shows the first commit date in YYYY-MM-DD format (note duplicate alias name is repeated below—remove if redundant)
+	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
+	  # Duplicate alias for 'fc'—recommend removing or renaming one to avoid conflicts
+	g = grep --break --heading --line-number
+	  # 'git g' for quick grep with nice formatting
+	home = browse
+	  # 'git home' might open the remote repository in a browser, depending on local config
+	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	  # 'git l' for a nice, colorized, single-line commit log graph
+	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author pierre@boutquin.com\" -"
+	  # 'git ld' lists commits from the past N days (defaults to 1 day) by the current user
+	ll = log --graph --abbrev-commit --pretty=oneline
+	  # 'git ll' for a minimal one-line log graph
+	lm = log --pretty=format:'* %s (%h)'
+	  # 'git lm' lists commits in a bullet format with short hash
+	p = push
+	  # 'git p' to push to remote
+	patch = !git --no-pager diff --no-color
+	  # 'git patch' shows diff output without a pager and no color
+	pf = push --force
+	  # 'git pf' for a force push
+	rh = reset --hard HEAD
+	  # 'git rh' discards local changes and resets to HEAD
+	ra = rebase --abort
+	  # 'git ra' to abort an ongoing rebase
+	rc = rebase --continue
+	  # 'git rc' to continue an ongoing rebase after conflict resolution
+	s = status
+	  # 'git s' for a quick status check
+	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
+	  # 'git show-ignored' lists files ignored by .gitignore (safe to remove with 'git clean')
+	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
+	  # 'git sshort' shows a brief summary of added/deleted lines for the specified commit or HEAD
+
+###########################################################
+# [diff], [difftool]
+#   Settings controlling diff behavior.
+###########################################################
+[diff]
+	renames = copies                      # Treat renames as copies for more detailed diff
+	indentHeuristic = true               # Improves detection of moved lines
+	colorMoved = default                  # Color moved lines in diffs for clarity
+	tool = vscode                         # Use Visual Studio Code as difftool if invoked
+
+[difftool]
+	prompt = false                        # Skip the "Launch 'code' [Y/n]?" prompt
+
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+	path =                                # Uses the default path from environment
+
+###########################################################
+# [merge], [mergetool]
+#   Settings controlling merge conflict resolution.
+###########################################################
+[merge]
+	conflictstyle = diff3                 # Show base version in conflict for better context
+	defaultToUpstream = true             # Merge commands default to the upstream branch
+	tool = vscode                         # Use VS Code as mergetool if invoked
+
+[mergetool]
+	prompt = false                        # Skip prompts when running the merge tool
+
+[mergetool "vscode"]
+	cmd = code --wait $MERGED            # Opens VS Code for resolving merge conflicts
+	trustExitCode = true                 # Trust editor's exit code to determine success/failure
+
+###########################################################
+# [delta]
+#   Fine-tuning the 'delta' pager/diff tool.
+###########################################################
+[delta]
+	light = false                         # Use dark (default) syntax highlighting
+	navigate = true                       # Enable line-by-line navigation in delta's pager
+
+###########################################################
+# [color]
+#   General color settings for Git.
+###########################################################
+[color]
+	ui = auto                             # Git automatically decides when to colorize output
+
+###########################################################
+# END OF GIT CONFIG
+###########################################################
