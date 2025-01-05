@@ -20,10 +20,10 @@ export PATH="$PATH:/usr/bin:/bin"
 # Load private environment variables (if present)
 ###############################################################################
 # The `private_env.sh` file stores sensitive environment variables such as API keys.
-# This file is symlinked to ~/.config/private_env.sh by the dotfiles setup script.
+# This file is symlinked to ~/.config/private_env.zsh by the dotfiles setup script.
 # Ensure it exists before sourcing.
-if [ -f "$HOME/.config/private_env.sh" ]; then
-    source "$HOME/.config/private_env.sh"
+if [ -f "$HOME/.config/private_env.zsh" ]; then
+    source "$HOME/.config/private_env.zsh"
 fi
 
 ###############################################################################
