@@ -55,7 +55,7 @@ __pycache__/         # Python byte-compiled script cache
 *.env                # Environment variable files
 *.env.local          # Local overrides for environment
 .envrc               # direnv or other environment loaders
-#private_env.*        # Personal environment files
+private_env.*        # Personal environment files
 
 ########################################################
 # End of .gitignore
