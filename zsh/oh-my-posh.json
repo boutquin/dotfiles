@@ -5,25 +5,6 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#1e88e5",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "powerline",
-          "template": " \uf017 {{ .Formatted }} ",
-          "type": "time"
-        },
-        {
-          "background": "#4caf50",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
-          "template": " \uf1cb {{ .Venv }} ",
-          "type": "venv"
-        },
-        {
           "background": "#ff479c",
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
@@ -46,19 +27,8 @@
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " {{ .HEAD }} {{ if .Upstream }}\uf55b {{ .Upstream }}{{ end }}{{ if gt .Ahead 0 }} \uf150 {{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uf191 {{ .Behind }}{{ end }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
+          "template": " {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
           "type": "git"
-        },
-        {
-          "background": "#00796b",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "properties": {
-            "fetch_context": true
-          },
-          "style": "powerline",
-          "template": " \uf1b3 {{ .Context }} ",
-          "type": "kubernetes"
         },
         {
           "background": "#6CA35E",
@@ -70,17 +40,6 @@
           "style": "powerline",
           "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
           "type": "dotnet"
-        },
-        {
-          "background": "#ff4081",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "properties": {
-            "always_enabled": true
-          },
-          "style": "powerline",
-          "template": " \uf240 {{ .Percentage }}% ",
-          "type": "battery"
         },
         {
           "background": "#ffff66",
