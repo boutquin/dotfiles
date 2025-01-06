@@ -164,7 +164,7 @@ echo "Symlinking Ruby on Rails config..."
 mkdir -p "$HOME/.config/rails"
 
 # Symlink Git configuration files
-createSymlink "$DOTFILES_DIR/config/rails/railsrc" "$HOME/.config/git/railsrc"
+createSymlink "$DOTFILES_DIR/config/rails/railsrc" "$HOME/.config/rails/railsrc"
 
 ###############################################################################
 # Wrap up
