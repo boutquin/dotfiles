@@ -62,6 +62,12 @@ setopt hist_ignore_dups      # Ignore duplicate commands in history
 setopt hist_ignore_space     # Ignore commands prefixed with a space
 
 ###############################################################################
+# Load nvm (Node Version Manager)
+###############################################################################
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+###############################################################################
 # Load additional configurations
 ###############################################################################
 # Source any additional configuration files or scripts if needed.
