@@ -198,6 +198,14 @@ mkdir -p "$HOME/.config/rails"
 createSymlink "$DOTFILES_DIR/config/rails/railsrc" "$HOME/.config/rails/railsrc"
 
 ###############################################################################
+# Symlink RSpec options to ~/.config/rspec/
+###############################################################################
+echo ""
+echo "Symlinking RSpec options..."
+mkdir -p "$HOME/.config/rspec"
+createSymlink "$DOTFILES_DIR/config/rspec/options" "$HOME/.config/rspec/options"
+
+###############################################################################
 # Wrap up
 ###############################################################################
 echo ""
