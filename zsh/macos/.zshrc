@@ -5,6 +5,14 @@
 # This file is executed for interactive shells. It sets up shell-specific
 # configurations, aliases, and prompt behavior.
 #
+# Here are all the zsh startup files that zsh reads when it starts up:
+# The  .zshrc  file is responsible for setting up the shell environment for interactive sessions. It is executed for interactive shells and is responsible for setting up aliases, functions, and other shell options. 
+# The  .zprofile  file is executed for login shells and is responsible for setting up environment variables and paths that should be available in all sessions. 
+# The  .zshenv  file is executed for all shells, including non-interactive ones. It is responsible for setting up environment variables that should be available in all sessions. 
+# The  .zlogin  file is executed for login shells after the  .zprofile  file. It is responsible for setting up additional environment variables or running commands that should only be executed once per login session. 
+# The  .zlogout  file is executed when a login shell exits. It is responsible for cleaning up any resources or performing any final tasks before the shell exits. 
+# The  .zshrc  file is responsible for setting up the shell environment for interactive sessions. It is executed for interactive shells and is responsible for setting up aliases, functions, and other shell options. The  .zprofile  file is executed for login shells and is responsible for setting up environment variables and paths that should be available in all sessions. The  .zshenv  file is executed for all shells, including non-interactive ones. It is responsible for setting up environment variables that should be available in all sessions. The  .zlogin  file is executed for login shells after the  .zprofile  file. It is responsible for setting up additional environment variables or running commands that should only be executed once per login session. The  .zlogout  file is executed when a login shell exits. It is responsible for cleaning up any resources or performing any final tasks before the shell exits. 
+#
 
 ###############################################################################
 # Load the zprofile for environment variables (if not already loaded)
