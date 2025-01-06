@@ -1,0 +1,69 @@
+# Specify a custom template for Rails application setup
+# This template file contains additional configuration scripts or actions that 
+# can modify the default Rails application generation process.
+--template=~/.rails/template.rb
+
+# Use PostgreSQL as the database for the application
+# PostgreSQL is a robust, open-source relational database commonly used in production environments.
+# It is a good choice for applications requiring scalability and advanced SQL features.
+--database=postgresql
+
+# Use esbuild for JavaScript bundling
+# Esbuild is a modern, fast JavaScript bundler and minifier, suitable for smaller or highly optimized applications.
+# It's an alternative to Webpacker or other JavaScript build tools.
+--javascript=esbuild
+
+# Use PostCSS for CSS preprocessing
+# PostCSS allows you to write future-proof CSS with plugins for features like autoprefixing, custom properties, or nested rules.
+# This replaces default Rails CSS options like SASS or Tailwind integration.
+--css=postcss
+
+# Skip Action Cable setup
+# Action Cable is a framework for real-time features using WebSockets.
+# Skipping this setup is suitable for applications that do not need real-time functionality like chat or live updates.
+--skip-action-cable
+
+# Skip Action Mailbox setup
+# Action Mailbox processes incoming emails in Rails applications.
+# Skipping this is suitable for apps that do not process inbound emails.
+--skip-action-mailbox
+
+# Skip Action Mailer setup
+# Action Mailer is a framework for sending emails from Rails applications.
+# Skipping this reduces setup time for apps that do not send emails (e.g., API-only apps).
+--skip-action-mailer
+
+# Skip Action Text setup
+# Action Text is used to manage rich text content and embeds with Trix editor integration.
+# Skipping this is suitable for apps that do not require rich text editing.
+--skip-action-text
+
+# Skip Active Storage setup
+# Active Storage is used to manage file uploads and attachments.
+# Skipping this is suitable for apps that do not handle file uploads or use third-party services.
+--skip-active-storage
+
+# Skip Hotwire (Turbo and Stimulus) setup
+# Hotwire is a modern approach to building Rails applications with minimal JavaScript.
+# Skipping this is suitable for apps that rely on other frontend frameworks like React or Vue.
+--skip-hotwire
+
+# Skip default test framework setup
+# Rails generates test files for models, controllers, and more using the default test framework (e.g., Minitest or RSpec).
+# Skipping tests can be useful if you plan to manually configure a different testing setup later.
+--skip-test
+
+# Skip Jbuilder setup
+# Jbuilder is used to create JSON responses in Rails applications.
+# Skipping this is suitable for applications that use alternative JSON generation methods (e.g., ActiveModel::Serializers or fast_jsonapi).
+--skip-jbuilder
+
+# Skip Kamal setup
+# Kamal is used for zero-downtime deployments with containerized environments like Docker.
+# Skipping this is useful if you have a custom deployment workflow or do not use Kamal.
+--skip-kamal
+
+# Add support for Dev Containers
+# Dev Containers allow you to define and develop in a standardized development environment using Docker.
+# This flag includes a `.devcontainer` configuration directory in your application.
+--devcontainers

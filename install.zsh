@@ -155,6 +155,18 @@ echo "Symlinking starship prompt configuration..."
 createSymlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml"
 
 ###############################################################################
+# Symlink Ruby on Rails config to ~/.config/rails/
+###############################################################################
+echo ""
+echo "Symlinking Ruby on Rails config..."
+
+# Ensure ~/.config/git directory exists
+mkdir -p "$HOME/.config/rails"
+
+# Symlink Git configuration files
+createSymlink "$DOTFILES_DIR/config/rails/railsrc" "$HOME/.config/git/railsrc"
+
+###############################################################################
 # Wrap up
 ###############################################################################
 echo ""
