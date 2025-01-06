@@ -3,14 +3,25 @@
 # install.zsh
 #
 # This script sets up symlinks for your dotfiles on both macOS and Linux.
-# It detects the OS, picks the correct .zshrc/.zprofile files,
-# and also symlinks private_env.sh, global Git config, starship, etc.
+# It:
+#   1) Detects the OS (macOS or Linux).
+#   2) Picks the correct Zsh config files (i.e., .zshrc, .zprofile) from the
+#      appropriate folder in your dotfiles repo (e.g. zsh/macos or zsh/linux).
+#   3) Symlinks private_env.zsh to ~/.config/private_env.zsh with secure
+#      permissions if found.
+#   4) Symlinks global Git config & ignore to ~/.config/git.
+#   5) Symlinks starship and Oh My Posh config files.
+#   6) Optionally symlinks your Ruby on Rails config.
+#   7) NEW: Symlinks zsh_aliases_shared.zsh (if present) and an OS-specific
+#      zsh_aliases.zsh (macOS or Linux).
 #
-# Usage: 
+# Usage:
 #   1. cd into your dotfiles repo
 #   2. Run this script: ./install.zsh
 #
-# Make sure the script is executable: chmod +x install.zsh
+# Ensure the script is executable (chmod +x install.zsh) before running.
+#
+# Tip: If you'd like to see each command as it's run, set `set -x` (debug mode).
 #
 
 set -euo pipefail
@@ -70,12 +81,15 @@ createSymlink() {
 
 ###############################################################################
 # Secure private_env.zsh
+# Description:
+#   Sets restrictive permissions (chmod 600) on private_env.zsh if it exists,
+#   ensuring no other users on the system can read it.
 ###############################################################################
 securePrivateEnv() {
   local private_env_file="$1"
 
   if [ -e "$private_env_file" ]; then
-    echo "  Securing private_env.zsh with restrictive permissions."
+    echo "  Securing private_env.zsh with restrictive permissions (chmod 600)."
     chmod 600 "$private_env_file"
   else
     echo "  Warning: '$private_env_file' not found. Skipping security step."
@@ -95,12 +109,12 @@ esac
 echo "Detected OS: $CURRENT_OS"
 
 if [[ "$CURRENT_OS" == "unknown" ]]; then
-  echo "Unsupported OS: $OS_TYPE. Exiting..."
+  echo "Error: Unsupported OS: $OS_TYPE. Exiting..."
   exit 1
 fi
 
 ###############################################################################
-# Symlink private_env.sh to ~/.config/private_env.sh
+# Symlink private_env.zsh to ~/.config/private_env.zsh
 ###############################################################################
 echo ""
 echo "Handling private_env.zsh..."
@@ -118,11 +132,32 @@ securePrivateEnv "$PRIVATE_ENV_SOURCE"
 # Symlink Zsh configuration for the detected OS
 ###############################################################################
 echo ""
-echo "Symlinking Zsh configuration files..."
+echo "Symlinking Zsh configuration (.zshrc, .zprofile) for $CURRENT_OS..."
 ZSH_SOURCE_DIR="$DOTFILES_DIR/zsh/$CURRENT_OS"
 
 createSymlink "$ZSH_SOURCE_DIR/.zshrc" "$HOME/.zshrc"
 createSymlink "$ZSH_SOURCE_DIR/.zprofile" "$HOME/.zprofile"
+
+###############################################################################
+# Symlink OS-specific aliases, plus a shared aliases file if present
+###############################################################################
+echo ""
+echo "Symlinking Zsh alias files..."
+
+# Shared aliases file (optional)
+SHARED_ALIASES_SOURCE="$DOTFILES_DIR/zsh/zsh_aliases_shared.zsh"
+SHARED_ALIASES_TARGET="$HOME/.config/zsh/zsh_aliases_shared.zsh"
+
+# Ensure ~/.config directory exists
+mkdir -p "$HOME/.config/zsh"
+
+createSymlink "$SHARED_ALIASES_SOURCE" "$SHARED_ALIASES_TARGET"
+
+# OS-specific aliases (e.g., zsh_aliases.zsh in zsh/macos or zsh/linux)
+OS_SPECIFIC_ALIASES_SOURCE="$DOTFILES_DIR/zsh/$CURRENT_OS/zsh_aliases.zsh"
+OS_SPECIFIC_ALIASES_TARGET="$HOME/.config/zsh/zsh_aliases.zsh"
+
+createSymlink "$OS_SPECIFIC_ALIASES_SOURCE" "$OS_SPECIFIC_ALIASES_TARGET"
 
 ###############################################################################
 # Symlink Oh My Posh configuration to ~/.oh-my-posh.json
@@ -151,7 +186,7 @@ createSymlink "$DOTFILES_DIR/config/git/config" "$HOME/.config/git/config"
 # Symlink starship configuration (~/.config/starship.toml by default)
 ###############################################################################
 echo ""
-echo "Symlinking starship prompt configuration..."
+echo "Symlinking Starship prompt configuration (starship.toml)..."
 createSymlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml"
 
 ###############################################################################
@@ -159,16 +194,15 @@ createSymlink "$DOTFILES_DIR/config/starship.toml" "$HOME/.config/starship.toml"
 ###############################################################################
 echo ""
 echo "Symlinking Ruby on Rails config..."
-
-# Ensure ~/.config/git directory exists
 mkdir -p "$HOME/.config/rails"
-
-# Symlink Git configuration files
 createSymlink "$DOTFILES_DIR/config/rails/railsrc" "$HOME/.config/rails/railsrc"
 
 ###############################################################################
 # Wrap up
 ###############################################################################
 echo ""
+echo "=========================================================="
 echo "Done! Your dotfiles have been symlinked successfully."
-echo "You can close and reopen your terminal or run 'source ~/.zshrc' to apply the changes."
+echo "Detected OS: $CURRENT_OS"
+echo "Please close and reopen your terminal, or run 'source ~/.zshrc' to load new configs."
+echo "=========================================================="
