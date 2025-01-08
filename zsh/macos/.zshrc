@@ -97,6 +97,11 @@ setopt share_history      # Share history across sessions
 setopt inc_append_history # Incrementally append commands to HISTFILE
 
 ###############################################################################
+# iTerm2 Shell Integration
+###############################################################################
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+###############################################################################
 # Final Instructions
 ###############################################################################
 # 1) To reload this file: `source ~/.zshrc`
