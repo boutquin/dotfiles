@@ -1,5 +1,6 @@
 ############################################################
-# Global Git Ignore File for macOS and Ubuntu/Linux systems
+# Global Git Ignore File for macOS, Ubuntu/Linux,
+# and Windows
 # ----------------------------------------------------------
 # Place this in ~/.config/git/ignore or ~/.gitignore_global
 # and configure via:
@@ -25,35 +26,59 @@
 # macOS custom folder attributes
 .LSOverride
 
-# brew caches
-Library/Caches/Homebrew/
-
 # Caches, metadata, or hidden files created by macOS
 # If you find other ephemeral system files you do not need in any repos,
 # you can add them here.
 
 ############################################################
 # Ubuntu/Linux-specific system files and folders
-############################################################
+############################################################ 
 
 # Trash folder which might be used by some Linux desktop environments
 .Trash-*
 
 # Thumbnails (GNOME-based or other desktop environment)
-.thumbnails
-.cache/thumbnails/
+# If you use a distro that generates thumbnails in a specific folder under
+# your user directory, you can ignore them here. For example:
+# .thumbnails/
+# .cache/thumbnails/
+
+############################################################
+# Windows-specific system files and folders
+############################################################
+
+# The 'desktop.ini' file stores folder customizations.
+Desktop.ini # Windows folder customizations 
+
+# Windows Recycle Bin directory name (varies by drive/partition).
+$RECYCLE.BIN/ # Recycle Bin directory 
+
+# System Volume Information (hidden system directory on each drive).
+System Volume Information/      # Used by Windows for restore points 
+
+# Thumbnails and backup files
+Thumbs.db # Windows Explorer thumbnail cache
+ehthumbs.db # Extra thumbnail cache for media center
+
+# Microsoft Office temporary files (common pattern):
+~$* # Office typically names temp files like ~$Document.docx 
+
+# Windows Explorer may generate additional thumbcache files in:
+# %LocalAppData%\Microsoft\Windows\Explorer
+# Typically, you won't see these in a repo, but ignoring them globally
+# helps prevent accidental commits if they appear.
+thumbcache_*.db 
+
+# If you find additional ephemeral OS or system-level files on Windows 11,
+# you can add them here.
 
 ############################################################
 # Temporary or common system-level files
-############################################################
+############################################################ 
 
-# Windows hidden files (harmless to ignore if not on Windows)
-Thumbs.db
-ehthumbs.db
-
-# Windows desktop.ini files
-Desktop.ini
-
+# If any cross-platform ephemeral files or caches exist, list them here.
+# e.g., log files created by the system outside of project scope, etc.
+ 
 ############################################################
 # Additional Notes
 # ----------------------------------------------------------
