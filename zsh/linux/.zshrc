@@ -98,3 +98,5 @@ fi
 # 2) To debug Zsh startup issues, run: `zsh -xv` or put `set -xv` at the top.
 # 3) If you see slow startup, time each section with `date` calls around blocks.
 # 4) If oh-my-posh or starship are not found, ensure they are installed and on your PATH.
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zshrc (Linux)."

@@ -34,3 +34,5 @@ alias free='free -h'   # Usually installed by default on most Linux distros.
 
 # If you prefer to open files with xdg-open:
 # alias o='xdg-open'
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded Linux aliases."

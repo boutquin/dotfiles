@@ -33,3 +33,5 @@ alias du='du -h -d 1' # Summarize disk usage (BSD variant accepts -d)
 
 # If you'd like to override top with htop (if installed via brew):
 # alias top='htop'
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded macOS aliases."

@@ -154,3 +154,5 @@ fi
 #       # load each big chunk (e.g., oh-my-posh)
 #       # measure difference with zshrc_timer again
 # 4) If oh-my-posh or starship are not found, ensure they are installed and on your PATH.
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zshrc (macOS)."

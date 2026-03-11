@@ -66,3 +66,5 @@ export EDITOR="code --wait"
 #
 # Or log out and log back in if you want to test changes in a more
 # "fresh" environment.
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zprofile (Linux)."

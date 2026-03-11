@@ -57,3 +57,5 @@ alias be='bundle exec'
 # PHP SHORTCUTS
 ###############################################################################
 alias larafast='curl -s -O https://larafast.com/install && bash install'
+
+[[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded shared aliases."
