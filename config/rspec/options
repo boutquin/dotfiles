@@ -1,0 +1,48 @@
+###############################################################################
+# $XDG_CONFIG_HOME/rspec/options
+#
+# This RSpec options file is automatically loaded by RSpec if it exists in
+# $XDG_CONFIG_HOME/rspec/options.
+#
+# -----------------------------------------------------------------------------
+# KEY FLAGS:
+# -----------------------------------------------------------------------------
+#   --color
+#      Enables colored output in test results.
+#
+#   --warnings
+#      Shows Ruby warnings in the test output. Helps catch potential issues,
+#      e.g., deprecated method calls or variable shadowing.
+#
+#   --require rails_helper
+#      Automatically loads your "rails_helper.rb" before running tests.
+#
+#   --format documentation
+#      Outputs test results in a descriptive, readable format.
+#
+# -----------------------------------------------------------------------------
+# Additional (optional) flags:
+# -----------------------------------------------------------------------------
+#   --profile 5   # Shows the top 5 slowest examples (useful for perf tuning)
+#   --fail-fast   # Stop running after the first failing test
+#   --order random
+#   --tag focus
+#
+###############################################################################
+
+--color
+--warnings
+--require rails_helper
+--format documentation
+
+# Uncomment to show top 5 slowest examples:
+# --profile 5
+
+# Uncomment to stop after the first failing test:
+# --fail-fast
+
+# Uncomment to randomize the order of example execution:
+# --order random
+
+# Uncomment to run only specs tagged with :focus:
+# --tag focus

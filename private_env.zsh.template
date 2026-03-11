@@ -1,0 +1,60 @@
+#!/usr/bin/env zsh
+#
+# private_env.zsh — Private environment variables
+#
+# INSTRUCTIONS:
+#   1. Copy this file to private_env.zsh in the same directory:
+#        cp private_env.zsh.template private_env.zsh
+#   2. Fill in your actual values
+#   3. Run install.zsh to symlink to ~/.config/private_env.zsh
+#   4. NEVER commit private_env.zsh — only the template is tracked
+#
+# This file is sourced by .zprofile on login and .zshrc as a fallback.
+# All values are available to child processes via export.
+#
+
+###############################################################################
+# Personal Identity
+###############################################################################
+export GITHUB_USER_NAME=""
+export MY_NAME=""
+export MY_PRIVATE_EMAIL=""
+
+###############################################################################
+# Database
+###############################################################################
+export MYSQL_ROOT_USER=""
+export MYSQL_ROOT_PASS=""
+
+###############################################################################
+# Email / SMTP
+###############################################################################
+export MAIL_MAILER=""
+export MAIL_FROM_ADDRESS=""
+export RESEND_API_KEY=""
+
+###############################################################################
+# Commerce & Marketing
+###############################################################################
+export THRIVECART_API_KEY=""
+export KIT_API_KEY=""
+
+###############################################################################
+# Zoom
+###############################################################################
+export ZOOM_ACCOUNT_ID=""
+export ZOOM_CLIENT_ID=""
+export ZOOM_CLIENT_SECRET=""
+
+###############################################################################
+# AI / LLM
+###############################################################################
+export DEEPGRAM_API_KEY=""
+export ANTHROPIC_API_KEY=""
+export GOOGLE_API_KEY=""
+export OPENAI_API_KEY=""
+
+###############################################################################
+# Infrastructure
+###############################################################################
+export SSH_PROXY_HOST=""
