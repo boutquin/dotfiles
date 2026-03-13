@@ -35,3 +35,5 @@ alias du='du -h -d 1' # Summarize disk usage (BSD variant accepts -d)
 # alias top='htop'
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded macOS aliases."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code

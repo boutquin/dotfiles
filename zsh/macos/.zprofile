@@ -87,3 +87,5 @@ fi
 # "fresh" environment.
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zprofile (macOS)."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code

@@ -68,3 +68,5 @@ export EDITOR="code --wait"
 # "fresh" environment.
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zprofile (Linux)."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code

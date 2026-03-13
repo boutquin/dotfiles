@@ -36,3 +36,5 @@ alias free='free -h'   # Usually installed by default on most Linux distros.
 # alias o='xdg-open'
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded Linux aliases."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code

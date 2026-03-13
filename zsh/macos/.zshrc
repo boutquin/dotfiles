@@ -156,3 +156,4 @@ fi
 # 4) If oh-my-posh or starship are not found, ensure they are installed and on your PATH.
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zshrc (macOS)."
+true  # Ensure shell startup exits 0 even when DEBUG_DOTFILES is unset

@@ -59,3 +59,5 @@ alias be='bundle exec'
 alias larafast='curl -s -O https://larafast.com/install && bash install'
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded shared aliases."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code

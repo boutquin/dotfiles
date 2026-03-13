@@ -100,3 +100,5 @@ fi
 # 4) If oh-my-posh or starship are not found, ensure they are installed and on your PATH.
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zshrc (Linux)."
+
+true  # Ensure sourcing this file never leaves a non-zero exit code
