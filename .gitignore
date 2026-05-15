@@ -88,3 +88,5 @@ private_env.*
 ########################################################
 # End of .gitignore
 ########################################################
+# Claude Code session logs (private workspace)
+sessions/
