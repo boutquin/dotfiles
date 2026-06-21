@@ -90,3 +90,7 @@ private_env.*
 ########################################################
 # Claude Code session logs (private workspace)
 sessions/
+
+# Timestamped backup artifacts ([file].bak.YYYY-MM-DD-HHMM)
+*.bak
+*.bak.*
