@@ -36,10 +36,6 @@ fi
 # PATH — Language Runtimes & Tools
 ###############################################################################
 
-# PHP 8.3 (Homebrew)
-export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
-
 # Bun (JavaScript runtime and package manager)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -157,3 +153,19 @@ fi
 
 [[ -n "$DEBUG_DOTFILES" ]] && echo "Loaded .zshrc (macOS)."
 true  # Ensure shell startup exits 0 even when DEBUG_DOTFILES is unset
+export PATH="/opt/homebrew/opt/openjdk@25/bin:$PATH"
+
+# Pierre-OS data root — single relocatable home for agent-OS runtime data
+# (arenas, knowledge, learning-system, skill-patterns, docs). Skills derive
+# their data home as "$PIERRE_OS_HOME/<dir>"; override this one var to relocate.
+export PIERRE_OS_HOME="$HOME/.pierre/agent-os"
+
+# ZenithMind-OS data root — separate home for the ZenithMind skill packs
+# (zenithmind-elite-skills, zenithproskillpackage). Parallel to $PIERRE_OS_HOME.
+export ZENITHMIND_OS_HOME="$HOME/.pierre/ZenithMind-OS"
+
+# direnv — per-directory env loading (added by /sp-connect doppler).
+# Static hook only: no secrets, no network. SP/Doppler secrets load from a
+# per-directory .envrc (see ~/.config/direnv or each project's .envrc), not here.
+# Keep this last in .zshrc per direnv's guidance.
+eval "$(direnv hook zsh)"
